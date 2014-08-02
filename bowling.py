@@ -8,7 +8,7 @@ def calculateScore(rolls):
         'X' indicates a strike
         '/' indicates a spare
         '-' indicates a miss
-        [1-9] otherwise, indicate the number of knocked pins
+        [1-9] otherwise, indicate the number of knocked pins on a given roll
     """
     return -1
 
