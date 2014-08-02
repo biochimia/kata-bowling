@@ -1,5 +1,23 @@
 #!/usr/bin/env python
 
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+
+
+def frameDescription(frameCount):
+    """Returns a user-friendly description for a given frame count, as used in
+    calculateScore().
+    """
+    if frameCount > 20:
+        return "Extra ball"
+
+    frameCount -= 1
+    frame = frameCount / 2 + 1
+    roll = frameCount % 2 + 1
+
+    return "Frame %i, roll %i" % (frame, roll)
+
 
 def calculateScore(rolls):
     """Produces the total score for a single line of American Ten-Pin Bowling.
@@ -45,6 +63,9 @@ def calculateScore(rolls):
         previousKnockedPins = knockedPins
 
         runningScore += multiplier * knockedPins
+        logging.debug(
+            "%s: knocked %i pins, running score %i",
+            frameDescription(frameCount), knockedPins, runningScore)
 
     return runningScore
 
