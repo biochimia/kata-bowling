@@ -14,4 +14,7 @@ setup(
         'Programming Language :: Python :: 3'
     ],
     license='MIT',
+
+    tests_require=['nose'],
+    test_suite='nose.collector',
 )
