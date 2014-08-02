@@ -21,9 +21,8 @@ def calculateScore(rolls):
     previousKnockedPins = 0
     knockedPins = 0
 
-    # Spares and strikes influence multiplier for subsequent rolls (current,
-    # next and after)
-    rollMultipliers = [1, 1, 1]
+    # Spares and strikes influence multiplier for subsequent rolls
+    rollMultipliers = [1] * 22
 
     for roll in rolls:
         frameCount += 1
@@ -43,7 +42,6 @@ def calculateScore(rolls):
             knockedPins = int(roll)
 
         multiplier = rollMultipliers.pop(0)
-        rollMultipliers.append(1)
         previousKnockedPins = knockedPins
 
         runningScore += multiplier * knockedPins
